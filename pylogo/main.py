@@ -85,11 +85,13 @@ class PyLogo(cmd.Cmd):
     def do_bye(self, arg):
         'Stop recording, close the turtle window, and exit: bye'
         print('Logo says Goodbye!')
-        file_name.close()
-        self.flag = 0
-        self.close()
-        bye()
-        sys.exit(0)
+        try:
+            self.flag = 0
+            self.close()
+            bye()
+            sys.exit(0)
+        except Exception as e:
+            print e
 
     def do_stop_record(self, arg):
         'Close the current recording'
@@ -97,7 +99,7 @@ class PyLogo(cmd.Cmd):
         self.flag = 0
 
     def do_record(self, arg=None):
-        "Save future commands to filename: record rose.cmd"
+        "Save future commands to filename: record playback.cmd"
         if not self.flag:
             global file_name
             self.flag = 1
@@ -105,15 +107,16 @@ class PyLogo(cmd.Cmd):
         file_name.write(arg)
 
     def do_playback(self, arg):
-        "Playback commands from a file: playback rose.cmd"
+        "Playback commands from a file: playback playback.cmd"
         self.close()
         cmds = open(arg).read().splitlines()
         self.cmdqueue.extend(cmds)
 
     def close(self):
-        if self.file:
-            self.file.close()
-            self.file = None
+        global file_name
+        if file_name:
+            file_name.close()
+            file_name = None
 
 
 def parse(arg):
