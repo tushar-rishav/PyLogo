@@ -1,7 +1,7 @@
 # PyLogo
 An imitation of Logo in Python.
 
-### Demo
+### [Demo](https://cloud.githubusercontent.com/assets/7397433/9383887/fee2eb4a-4769-11e5-8c73-9e9d6d27023c.gif)
 ![PyLogo](https://cloud.githubusercontent.com/assets/7397433/9383887/fee2eb4a-4769-11e5-8c73-9e9d6d27023c.gif)
 
 ### Installation
