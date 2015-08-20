@@ -44,9 +44,9 @@ class PyLogo(cmd.Cmd):
     def do_circle(self, arg):
         '''
             Draw circle: circle (radius, extent=None, steps=None)
-            circle 50,180,2
+            circle 50 180 2
             circle 50
-            circle 50,180
+            circle 50 180
         '''
         circle(*parse(arg))
         if self.flag:
